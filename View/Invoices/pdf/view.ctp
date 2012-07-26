@@ -1,5 +1,5 @@
 <?php
-	$title_for_layout = sprintf(__d('invoices', 'Invoice n°%s', true), $invoice['Invoice']['id']);
+	$title_for_layout = sprintf(__d('invoices', 'Invoice n°%s', $invoice['Invoice']['number']));
 	$this->set(compact('title_for_layout'));
 	$this->InvoicePdf->addPage('', 'USLETTER');
 	$this->InvoicePdf->setFont('helvetica', '', 12);

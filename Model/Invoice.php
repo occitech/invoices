@@ -73,6 +73,14 @@ class Invoice extends InvoicesAppModel implements IInvoiceNumberGenerator {
 	private $__invoiceNumberGenerator;
 
 /**
+ * Is the id of invoice table identical to the number
+ *
+ * @var IInvoiceNumberGenerator
+ * @access private
+ */
+	private $__idIsNumber = true;
+
+/**
  * Attribute used for temporary storing data between save callbacks
  *
  * @var array
@@ -92,6 +100,11 @@ class Invoice extends InvoicesAppModel implements IInvoiceNumberGenerator {
 		$userClass = Configure::read('Invoices.UserClass');
 		if (empty($userClass)) {
 			$userClass = 'User';
+		}
+
+		$this->__idIsNumber = Configure::read('Invoices.isIsNumber');
+		if (is_null($this->__idIsNumber)) {
+			$this->__idIsNumber = true;
 		}
 
 		$maxLengthRule = create_function('$limit', <<<FUNC
@@ -133,11 +146,11 @@ FUNC
 		$this->cacheQueries = false;
 		if (empty($this->id)) {
 			$lastInvoiceNumber = $this->find('first', array(
-				'fields' => array($this->alias . '.' . $this->primaryKey),
+				'fields' => array($this->alias . '.number'),
 				'order' => array($this->alias . '.created DESC'),
 				'recursive' => -1
 			));
-			$lastInvoiceNumber = isset($lastInvoiceNumber[$this->alias][$this->primaryKey]) ? $lastInvoiceNumber[$this->alias][$this->primaryKey] : null;
+			$lastInvoiceNumber = isset($lastInvoiceNumber[$this->alias]['number']) ? $lastInvoiceNumber[$this->alias]['number'] : null;
 
 			$try = 1;
 			do {
@@ -147,11 +160,16 @@ FUNC
 					$invoiceNumber = String::uuid();
 				}
 				$duplicate = $this->find('count', array(
-					'conditions' => array($this->escapeField('id') => $invoiceNumber)
+					'conditions' => array($this->escapeField('number') => $invoiceNumber)
 				));
 			} while(!empty($duplicate));
 
-			$this->data[$this->alias][$this->primaryKey] = $invoiceNumber;
+			$this->data[$this->alias]['number'] = $invoiceNumber;
+			if ($this->__idIsNumber) {
+				$this->data[$this->alias]['id'] = $invoiceNumber;
+			} else {
+				$this->data[$this->alias]['id'] = String::uuid();
+			}
 		} else {
 			$this->_save['initial_state'] = $this->find('first', array(
 				'recursive' => -1,

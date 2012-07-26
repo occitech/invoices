@@ -92,7 +92,9 @@ class InvoiceTest extends SimpleAppTestCase {
 	public function setUp() {
 		parent::setUp();
 		$this->__saves['UserClass'] = Configure::read('Invoices.UserClass');
+		$this->__saves['idIsNumber'] = Configure::read('Invoices.idIsNumber');
 		Configure::write('Invoices.UserClass', 'InvoiceClient');
+		Configure::write('Invoices.idIsNumber', true);
 		$this->Invoice = new SpyInvoice();
 		$this->Invoice->setInvoiceNumberGenerator($this->Invoice);
 
@@ -106,6 +108,7 @@ class InvoiceTest extends SimpleAppTestCase {
  */
 	public function tearDown() {
 		Configure::write('Invoices.UserClass', $this->__saves['UserClass']);
+		Configure::write('Invoices.idIsNumber', $this->__saves['idIsNumber']);
 		parent::tearDown();
 		unset($this->Invoice);
 		ClassRegistry::flush();
@@ -168,6 +171,24 @@ class InvoiceTest extends SimpleAppTestCase {
 		$this->expectError('PHPUnit_Framework_Error');
 		$result = $this->Invoice->generate($client, $invoiceLine);
 		$resultInvoice = $this->Invoice->read();
+		$this->assertTrue($this->__isUuid($resultInvoice['Invoice']['id']));
+	}
+
+	public function testGenerateGenerateIdCanBeDifferantFromNumber() {
+		Configure::write('Invoices.isIsNumber', false);
+		$this->Invoice = new SpyInvoice();
+		$this->Invoice->setInvoiceNumberGenerator($this->Invoice);
+
+		$invoice = $this->_getNewRecord();
+		$client = $invoice['Invoice'];
+		unset($client['prefix']);
+		$invoiceLine = $invoice['InvoiceLine'];
+
+		$result = $this->Invoice->generate($client, $invoiceLine);
+		$resultInvoice = $this->Invoice->read();
+
+		$this->assertTrue($result);
+		$this->assertNotEquals($resultInvoice['Invoice']['id'], $resultInvoice['Invoice']['number']);
 		$this->assertTrue($this->__isUuid($resultInvoice['Invoice']['id']));
 	}
 
@@ -321,6 +342,6 @@ class InvoiceTest extends SimpleAppTestCase {
  * @return boolean Success
  */
 	private function __isUuid($check) {
-		return preg_match('/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i', $check);
+		return (bool) preg_match('/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i', $check);
 	}
 }

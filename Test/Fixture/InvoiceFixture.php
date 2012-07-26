@@ -7,6 +7,7 @@ class InvoiceFixture extends CakeTestFixture {
  */
 	public $fields = array(
 		'id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'primary'),
+		'number' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 36),
 		'prefix' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 10),
 		'client_id' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 36, 'key' => 'index', 'after' => 'prefix'),
 		'client_name' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 255, 'after' => 'client_id'),
@@ -26,6 +27,7 @@ class InvoiceFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => '2012-001',
+			'number' => '2012-001',
 			'prefix' => null,
 			'client_id' => 'user-1',
 			'client_name' => 'First User',
