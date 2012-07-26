@@ -1,8 +1,8 @@
 <?php
-	$title = __d('invoices', 'All Invoices', true);
+	$title = __d('invoices', 'All Invoices');
 	$this->set('title_for_layout', $title);
 ?>
-<div class="invoices page">
+<div class="invoices page index">
 	<div class="page-header">
 		<h1><?= $title; ?></h1>
 	</div>
@@ -61,4 +61,16 @@
 		</table>
 		<?php echo $this->element('paging'); ?>
 	<?php endif; ?>
+</div>
+<div class="actions">
+	<h3><?= __d('invoices', 'Actions'); ?></h3>
+	<ul>
+		<?php $this->Actions->setActionsOptions(null); ?>
+		<li><?=
+			$this->Html->link(
+				__d('invoices', 'Manage invoice settings'),
+				array('controller' => 'invoice_settings', 'action' => 'index')
+			);
+		?></li>
+	</ul>
 </div>

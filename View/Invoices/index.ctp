@@ -1,8 +1,8 @@
 <?php
-	$title = __d('invoices', 'All Invoices', true);
+	$title = __d('invoices', 'All Invoices');
 	$this->set('title_for_layout', $title);
 ?>
-<div class="invoices page">
+<div class="invoices page index">
 	<div class="page-header">
 		<h1><?= $title; ?></h1>
 	</div>

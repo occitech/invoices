@@ -1,5 +1,12 @@
+<?php
+	$title = __d('invoices', 'Invoice Settings');
+	$this->set('title_for_layout', $title);
+?>
 <div class="invoiceSettings index">
-	<h2><?php echo __d('invoices', 'Invoice Settings');?></h2>
+	<div class="page-header">
+		<h1><?= $title; ?></h1>
+	</div>
+
 	<table cellpadding="0" cellspacing="0">
 		<tr>
 			<th><?php echo $this->Paginator->sort('name', __d('invoices', 'Name'));?></th>
@@ -11,12 +18,22 @@
 				<td><?php echo h($invoiceSetting['InvoiceSetting']['name']); ?>&nbsp;</td>
 				<td><?php echo nl2br(h($invoiceSetting['InvoiceSetting']['value'])); ?>&nbsp;</td>
 				<td class="actions">
-					<?php echo $this->Html->link(__d('invoices', 'View'), array('action' => 'view', $invoiceSetting['InvoiceSetting']['id'])); ?>
 					<?php echo $this->Html->link(__d('invoices', 'Edit'), array('action' => 'edit', $invoiceSetting['InvoiceSetting']['id'])); ?>
-					<?php echo $this->Form->postLink(__d('invoices', 'Delete'), array('action' => 'delete', $invoiceSetting['InvoiceSetting']['id']), null, __d('invoices' ,'Are you sure you want to delete # %s?', $invoiceSetting['InvoiceSetting']['id'])); ?>
 				</td>
 			</tr>
 		<?php endforeach; ?>
 	</table>
 	<?php echo $this->element('paging'); ?>
+</div>
+<div class="actions">
+	<h3><?= __d('invoices', 'Actions'); ?></h3>
+	<ul>
+		<?php $this->Actions->setActionsOptions(null); ?>
+		<li><?=
+			$this->Html->link(
+				__d('invoices', 'List invoice'),
+				array('controller' => 'invoices', 'action' => 'index')
+			);
+		?></li>
+	</ul>
 </div>
