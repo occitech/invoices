@@ -1,0 +1,13 @@
+.invoice.view {
+	float: none;
+	width: 700px;
+}
+
+.invoice-num {
+	margin-bottom: 20px;  
+}
+
+.compagny .name, .client .name {
+	font-size: 1.2em;
+	font-weight: bold;
+}

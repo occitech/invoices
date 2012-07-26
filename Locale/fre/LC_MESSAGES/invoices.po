@@ -1,0 +1,262 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Invoices\n"
+"POT-Creation-Date: 2012-05-23 11:03+0200\n"
+"PO-Revision-Date: 2012-05-23 11:27+0100\n"
+"Last-Translator: Stéphane BENOIST <stephane@occi-tech.com>\n"
+"Language-Team: Occitech <contact@occi-tech.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: Controller/InvoiceSettingsController.php:33
+msgid "Paramètre de facturation invalide"
+msgstr "Paramètre de facturation invalide"
+
+#: Controller/InvoiceSettingsController.php:38
+msgid "Le paramètre de facturation a bien été sauvegardé."
+msgstr "Le paramètre de facturation a bien été sauvegardé."
+
+#: Controller/InvoiceSettingsController.php:41
+msgid "Le paramètre de facturation n'a pas pu être sauvegardé."
+msgstr "Le paramètre de facturation n'a pas pu être sauvegardé."
+
+#: Controller/InvoicesController.php:60
+msgid "You are not allowed to see this invoice."
+msgstr "Vous n'êtes pas autorisé à accéder à cette facture."
+
+#: Model/Invoice.php:146
+msgid "10 unsuccessful tries for invoice number generation. Check the generation algorithm."
+msgstr "10 essais infructueux pour la génération du numéro de facture. Vérifiez l'algorithme de génération."
+
+#: Model/Invoice.php:182
+msgid "Invalid Invoice"
+msgstr "Facture invalide"
+
+#: Model/Invoice.php:218
+msgid "The client of invoice n°%s do not exists."
+msgstr "Le client de la facture n°%s n'existe pas"
+
+#: Model/Invoice.php:222
+msgid "The invoice for client %s the %s was not generate."
+msgstr "La facture pour le client %s le %s n'a pas été générée."
+
+#: Model/Invoice.php:261
+msgid "Invoices.Invoice::getGlobalPrice - Either $invoice is not an id, either their is no \"InvoiceLine\" key in array"
+msgstr "Invoices.Invoice::getGlobalPrice - Soit $invoice n'est pas un id, soit il n'y a pas de clef \"InvoiceLine\" dans le tableau"
+
+#: Model/Invoice.php:322
+msgid "Invalid class %s for invoice number generation. It must implement the IInvoiceNumberGenerator interface."
+msgstr "Class %s invalid pour la génération du numéro de facture. Elle doit implémenter l'interface IInvoiceNumberGenerator."
+
+#: Model/InvoiceLine.php:54
+msgid "Please enter a product Model Class"
+msgstr "Saisissez une classe de modèle pour le produit svp."
+
+#: Model/InvoiceLine.php:61
+msgid "The product Model Class should not exceed 100 characters"
+msgstr "La classe de modèle pour le produit ne doit pas avoir plus de 100 caractères"
+
+#: Model/InvoiceLine.php:67
+msgid "Please enter a product id"
+msgstr "Saisissez un id de produit svp"
+
+#: Model/InvoiceLine.php:75
+msgid "Please enter a product name"
+msgstr "Saisissez un nom de produit svp."
+
+#: Model/InvoiceLine.php:83
+msgid "Please a decimal value for ecl. tax price"
+msgstr "Saisissez un valeur décimal pour le prix HT svp."
+
+#: Model/InvoiceLine.php:91
+msgid "Please enter a decimal value for tva price"
+msgstr "Saisissez un valeur décimal pour la tva svp."
+
+#: Model/InvoiceLine.php:99
+msgid "Please enter a decimal value for tva rate"
+msgstr "Saisissez un valeur décimal pour le taux de tva svp."
+
+#: Model/InvoiceSetting.php:27
+msgid "Saisissez un nom svp."
+msgstr "Saisissez un nom svp."
+
+#: Model/InvoiceSetting.php:35
+msgid "Saisissez une valeur svp."
+msgstr "Saisissez une valeur svp."
+
+#: Model/InvoiceSetting.php:43
+msgid "Saisissez un tag svp."
+msgstr "Saisissez un tag svp."
+
+#: Model/InvoiceSetting.php:50
+msgid "Le tag doit être unique"
+msgstr "Le tag doit être unique"
+
+#: View/Elements/paging.ctp:15
+msgid "< prev"
+msgstr "< prec"
+
+#: View/Elements/paging.ctp:17
+msgid "next >"
+msgstr "suiv >"
+
+#: View/Elements/invoices/compagny.ctp:5
+msgid "Intra VAT: %s"
+msgstr "TVA intra : %s"
+
+#: View/Elements/invoices/compagny.ctp:8
+msgid "SIRET: %s"
+msgstr "SIRET : %s"
+
+#: View/Elements/invoices/date.ctp:2
+msgid "%A, %B %d %Y"
+msgstr "%A %d %B %Y"
+
+#: View/Elements/invoices/details.ctp:15
+msgid "Product"
+msgstr "Produit"
+
+#: View/Elements/invoices/details.ctp:16
+msgid "Price"
+msgstr "Prix"
+
+#: View/Elements/invoices/details.ctp:43
+msgid "Total Excl. Taxes"
+msgstr "Total H.T."
+
+#: View/Elements/invoices/details.ctp:48
+msgid "TVA %s%%"
+msgstr "TVA %s%%"
+
+#: View/Elements/invoices/details.ctp:53
+#: View/Invoices/admin_index.ctp:24
+#: View/Invoices/index.ctp:23
+msgid "Total Incl. Taxes"
+msgstr "Total T.T.C."
+
+#: View/Elements/invoices/end_text.ctp:3
+msgid "Payment mode: %s"
+msgstr "Mode de payement : %s"
+
+#: View/Elements/invoices/invoice_num.ctp:1
+#: View/Invoices/view.ctp:2
+#: View/Invoices/pdf/view.ctp:2
+msgid "Invoice n°%s"
+msgstr "Facture n°%s"
+
+#: View/InvoiceSettings/admin_edit.ctp:4
+msgid "Edit Invoice Setting"
+msgstr "Édition des configuration de facture"
+
+#: View/InvoiceSettings/admin_edit.ctp:7
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: View/InvoiceSettings/admin_edit.ctp:10
+#: View/InvoiceSettings/admin_index.ctp:7
+#: View/Invoices/admin_index.ctp:25
+#: View/Invoices/index.ctp:24
+msgid "Actions"
+msgstr "Actions"
+
+#: View/InvoiceSettings/admin_edit.ctp:12
+msgid "List Invoice Settings"
+msgstr "Lister les configuration de facture"
+
+#: View/InvoiceSettings/admin_index.ctp:2
+msgid "Invoice Settings"
+msgstr "Configuration de facture"
+
+#: View/InvoiceSettings/admin_index.ctp:5
+msgid "Name"
+msgstr "Nom"
+
+#: View/InvoiceSettings/admin_index.ctp:6
+msgid "Value"
+msgstr "Valeur"
+
+#: View/InvoiceSettings/admin_index.ctp:14
+msgid "View"
+msgstr "Voir"
+
+#: View/InvoiceSettings/admin_index.ctp:15
+msgid "Edit"
+msgstr "Modifier"
+
+#: View/InvoiceSettings/admin_index.ctp:16
+msgid "Delete"
+msgstr "Supprimer"
+
+#: View/InvoiceSettings/admin_index.ctp:16
+msgid "Are you sure you want to delete # %s?"
+msgstr "Etes-vous sûr de vouloir supprimer # %s ?"
+
+#: View/Invoices/_search_form.ctp:15
+msgid "Date (YYYY-mm-dd)"
+msgstr "Date (aaaa-mm-jj)"
+
+#: View/Invoices/_search_form.ctp:21
+msgid "Client name"
+msgstr "Nom du client"
+
+#: View/Invoices/_search_form.ctp:27
+msgid "Min."
+msgstr "Min."
+
+#: View/Invoices/_search_form.ctp:28
+msgid "Price €"
+msgstr "Prix €"
+
+#: View/Invoices/_search_form.ctp:34
+msgid "Max."
+msgstr "Max."
+
+#: View/Invoices/_search_form.ctp:37
+msgid "Search"
+msgstr "Chercher"
+
+#: View/Invoices/admin_index.ctp:2
+#: View/Invoices/index.ctp:2
+msgid "All Invoices"
+msgstr "Toutes les factures"
+
+#: View/Invoices/admin_index.ctp:15
+#: View/Invoices/index.ctp:15
+msgid "No invoices match your criteria."
+msgstr "Aucune facture ne correspond à vos critères."
+
+#: View/Invoices/admin_index.ctp:22
+#: View/Invoices/index.ctp:22
+msgid "Date"
+msgstr "Date"
+
+#: View/Invoices/admin_index.ctp:23
+msgid "Client Name"
+msgstr "Nom du client"
+
+#: View/Invoices/admin_index.ctp:33
+#: View/Invoices/index.ctp:32
+msgid "%B %d %Y"
+msgstr "%d %B %Y"
+
+#: View/Invoices/admin_index.ctp:47
+#: View/Invoices/index.ctp:45
+msgid "Download (PDF)"
+msgstr "Télécharger (PDF)"
+
+#: View/Invoices/admin_index.ctp:52
+#: View/Invoices/index.ctp:50
+msgid "See"
+msgstr "Voir"
+
+#~ msgid "Admin Edit Invoice Setting"
+#~ msgstr "Édition des configuration de facture"
