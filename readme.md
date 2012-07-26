@@ -7,6 +7,9 @@ Add 'pdf in Router::parseExtensions() in Config/routes.php
 ## Dependencies
 
 This plugin use the search plugin of CakeDC (Tested with version 1.1).
+This plugin use the migrations plugin of CakeDC (Tested with version 2.1).
+This plugin use the partial plugin of joeytrapp.
+This plugin use the TCPDF (Tested with version 5.9.137).
 
 ## Configuration
 
