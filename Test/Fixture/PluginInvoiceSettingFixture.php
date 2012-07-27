@@ -3,7 +3,8 @@
  * InvoiceSettingFixture
  *
  */
-class InvoiceSettingFixture extends CakeTestFixture {
+class PluginInvoiceSettingFixture extends CakeTestFixture {
+	public $alias = 'InvoiceSetting';
 
 /**
  * Fields

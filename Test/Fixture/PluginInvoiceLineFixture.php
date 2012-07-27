@@ -1,6 +1,8 @@
 <?php
 /* InvoiceLine Fixture generated on: 2011-12-02 14:12:52 : 1322832532 */
-class InvoiceLineFixture extends CakeTestFixture {
+class PluginInvoiceLineFixture extends CakeTestFixture {
+	public $alias = 'InvoiceLine';
+
 /**
  * Fields
  *

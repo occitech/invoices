@@ -10,10 +10,10 @@ class InvoiceSettingTest extends SimpleAppTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'plugin.invoices.invoice',
-		'plugin.invoices.invoice_client',
-		'plugin.invoices.invoice_line',
-		'plugin.invoices.invoice_setting',
+		'plugin.invoices.plugin_invoice',
+		'plugin.invoices.plugin_invoice_client',
+		'plugin.invoices.plugin_invoice_line',
+		'plugin.invoices.plugin_invoice_setting',
 	);
 
 /**
@@ -37,7 +37,13 @@ class InvoiceSettingTest extends SimpleAppTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->InvoiceSetting = ClassRegistry::init('Invoices.InvoiceSetting');
+		$this->InvoiceSetting =
+		$this->InvoiceLine = ClassRegistry::init(array(
+			'class' => 'Invoices.InvoiceSetting',
+			'table' => 'plugin_invoice_settings',
+			'ds' => 'test',
+			'alias' => 'InvoiceSetting'
+		));
 
 		$this->_record = $this->InvoiceSetting->find();
 	}

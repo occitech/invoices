@@ -1,5 +1,7 @@
 <?php
-class InvoiceClientFixture extends CakeTestFixture {
+class PluginInvoiceClientFixture extends CakeTestFixture {
+	public $alias = 'InvoiceClient';
+
 /**
  * Fields
  *

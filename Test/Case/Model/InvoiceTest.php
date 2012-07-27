@@ -26,6 +26,16 @@ class InvoiceClient extends CakeTestModel {
 class SpyInvoice extends Invoice {
 	public $useDbConfig = 'test';
 	public $cacheSources = false;
+
+	public $useTable = 'plugin_invoices';
+	public $hasMany = array(
+		'InvoiceLine' => array(
+			'className' => 'Invoices.PluginInvoiceLine',
+			'dependent' => true,
+			'foreignKey' => 'invoice_id'
+		)
+	);
+
 	public function setInvoiceNumberGenerator($val) {
 		$this->_setInvoiceNumberGenerator($val);
 	}
@@ -58,9 +68,9 @@ class InvoiceTest extends SimpleAppTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'plugin.invoices.invoice',
-		'plugin.invoices.invoice_client',
-		'plugin.invoices.invoice_line',
+		'plugin.invoices.plugin_invoice',
+		'plugin.invoices.plugin_invoice_client',
+		'plugin.invoices.plugin_invoice_line',
 	);
 
 /**
@@ -93,7 +103,7 @@ class InvoiceTest extends SimpleAppTestCase {
 		parent::setUp();
 		$this->__saves['UserClass'] = Configure::read('Invoices.UserClass');
 		$this->__saves['idIsNumber'] = Configure::read('Invoices.idIsNumber');
-		Configure::write('Invoices.UserClass', 'InvoiceClient');
+		Configure::write('Invoices.UserClass', 'PluginInvoiceClient');
 		Configure::write('Invoices.idIsNumber', true);
 		$this->Invoice = new SpyInvoice();
 		$this->Invoice->setInvoiceNumberGenerator($this->Invoice);
