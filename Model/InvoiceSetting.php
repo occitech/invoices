@@ -24,7 +24,7 @@ class InvoiceSetting extends InvoicesAppModel {
 			'name' => array(
 				'notempty' => array(
 					'rule' => array('notempty'),
-					'message' => __d('invoices', 'Saisissez un nom svp.'),
+					'message' => __d('invoices', 'Please, write a name.'),
 					'allowEmpty' => false,
 					'required' => true,
 				),
@@ -32,7 +32,7 @@ class InvoiceSetting extends InvoicesAppModel {
 			'value' => array(
 				'notempty' => array(
 					'rule' => array('notempty'),
-					'message' => __d('invoices', 'Saisissez une valeur svp.'),
+					'message' => __d('invoices', 'Please, write a value.'),
 					'allowEmpty' => false,
 					'required' => true,
 				),
@@ -40,14 +40,14 @@ class InvoiceSetting extends InvoicesAppModel {
 			'tag' => array(
 				'notempty' => array(
 					'rule' => array('notempty'),
-					'message' => __d('invoices', 'Saisissez un tag svp.'),
+					'message' => __d('invoices', 'Please, write a tag.'),
 					'allowEmpty' => false,
 					'required' => true,
 					'last' => false
 				),
 				'isUnique' => array(
 					'rule' => array('isUnique'),
-					'message' => __d('invoices', 'Le tag doit être unique'),
+					'message' => __d('invoices', 'The tag must be unique.'),
 				)
 			),
 		);

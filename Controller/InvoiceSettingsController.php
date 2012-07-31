@@ -30,15 +30,15 @@ class InvoiceSettingsController extends AppController {
 		}
 
 		if (!$this->InvoiceSetting->exists()) {
-			throw new NotFoundException(__d('invoices', 'Paramètre de facturation invalide'));
+			throw new NotFoundException(__d('invoices', 'Invalid invoice setting'));
 		}
 
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->InvoiceSetting->save($this->request->data, true, array('value'))) {
-				$this->Session->setFlash(__d('invoices', 'Le paramètre de facturation a bien été sauvegardé.'));
+				$this->Session->setFlash(__d('invoices', 'Invoice setting has been successfully saved.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__d('invoices', 'Le paramètre de facturation n\'a pas pu être sauvegardé.'));
+				$this->Session->setFlash(__d('invoices', 'Invoice setting could not be saved.'));
 			}
 		} else {
 			$this->request->data = $this->InvoiceSetting->read(null, $this->InvoiceSetting->id);
