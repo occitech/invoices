@@ -98,10 +98,6 @@ class Invoice extends InvoicesAppModel implements IInvoiceNumberGenerator {
  */
 	public function __construct($id = false, $table = null, $ds = null) {
 		$userClass = Configure::read('Invoices.UserClass');
-		if (empty($userClass)) {
-			$userClass = 'User';
-		}
-
 		$this->__idIsNumber = Configure::read('Invoices.isIsNumber');
 		if (is_null($this->__idIsNumber)) {
 			$this->__idIsNumber = true;
