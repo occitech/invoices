@@ -22,6 +22,17 @@ class InvoicesAppController extends AppController {
 		'Html',
 		'Session',
 	);
+
+	public function beforeRender() {
+		if (method_exists($this, '_isAdminArea')) {
+			$isAdminArea = $this->_isAdminArea();
+		} else {
+			$isAdminArea = !empty($this->request->params['prefix']) && $this->request->params['prefix'] === 'admin';
+		}
+
+		$this->set('isAdminArea', $isAdminArea);
+		parent::beforeRender();
+	}
 }
 
 ?>

@@ -10,6 +10,8 @@ This plugin use the search plugin of CakeDC (Tested with version 1.1).
 This plugin use the migrations plugin of CakeDC (Tested with version 2.1).
 This plugin use the partial plugin of joeytrapp.
 This plugin use the TCPDF (Tested with version 5.9.137).
+This plugin use the jquery (Tested with version 1.7.1).
+This plugin use the TwitterBootstrapFormHelper of Occitech.
 
 ## Configuration
 
