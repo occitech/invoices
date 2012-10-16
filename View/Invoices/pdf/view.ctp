@@ -14,6 +14,12 @@
 	$this->InvoicePdf->writeHTML('<div></div>');
 	$this->InvoicePdf->writeHTML($this->element('invoices/client'));
 
+	if (!empty($invoiceSettings) && !empty($invoiceSettings['before_product'])) {
+		$this->InvoicePdf->writeHTML('<div></div>');
+		$this->InvoicePdf->writeHTML('<div></div>');
+		$this->InvoicePdf->writeHTML(nl2br(h($invoiceSettings['before_product'])));
+	}
+
 	$this->InvoicePdf->writeHTML('<div></div>');
 	$this->InvoicePdf->writeHTML('<div></div>');
 	$this->InvoicePdf->writeHTML($this->element('invoices/date'));
@@ -22,6 +28,13 @@
 	$this->InvoicePdf->writeHTML('<div></div>');
 	$this->InvoicePdf->writeHTML('<div></div>');
 	$this->InvoicePdf->writeHTML($this->element('invoices/details'));
+
+	if (!empty($invoiceSettings) && !empty($invoiceSettings['after_product'])) {
+		$this->InvoicePdf->writeHTML('<div></div>');
+		$this->InvoicePdf->writeHTML('<div></div>');
+		$this->InvoicePdf->writeHTML('<div></div>');
+		$this->InvoicePdf->writeHTML(nl2br(h($invoiceSettings['after_product'])));
+	}
 
 	$this->InvoicePdf->writeHTML('<div></div>');
 	$this->InvoicePdf->writeHTML('<div></div>');
