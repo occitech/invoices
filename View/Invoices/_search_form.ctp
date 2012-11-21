@@ -9,10 +9,10 @@
 )) ?>
 <fieldset class="well">
 	<?=
-		/* TODO add a datepicker and remove format from label */
-		$this->Form->iconizedInput('created', array(
+		$this->Form->dateInput('created', array(
 			'class' => 'input-medium',
-			'placeholder' => __d('invoices', 'Date (YYYY-mm-dd)'),
+			'placeholder' => __d('invoices', 'Date'),
+			'append' => false,
 			'prepend' => '<i class="icon-calendar"></i>',
 			'type' => 'text'
 		)) .
