@@ -17,10 +17,18 @@
 		echo $this->element('invoices/compagny');
 		echo $this->element('invoices/client');
 
+		if (!empty($invoiceSettings) && !empty($invoiceSettings['before_product'])) {
+			echo $this->Html->div('before-product-text', nl2br(h($invoiceSettings['before_product'])));
+		}
+
 		echo $this->element('invoices/date');
 		echo $this->element('invoices/invoice_num');
 
 		echo $this->element('invoices/details');
+
+		if (!empty($invoiceSettings) && !empty($invoiceSettings['after_product'])) {
+			echo $this->Html->div('after-product-text', nl2br(h($invoiceSettings['after_product'])));
+		}
 
 		echo $this->element('invoices/end_text');
 	?>

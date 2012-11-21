@@ -12,15 +12,21 @@
 		$this->Form->dateInput('created', array(
 			'class' => 'input-medium',
 			'placeholder' => __d('invoices', 'Date'),
-			'append' => false,
 			'prepend' => '<i class="icon-calendar"></i>',
+			'append' => '',
 			'type' => 'text'
-		)) .
-		$this->Form->iconizedInput('client_name', array(
-			'class' => 'input-medium',
-			'placeholder' => __d('invoices', 'Client name'),
-			'prepend' => '<i class="icon-user"></i>'
-		)) .
+		))
+	?>
+	<?php
+		if($isAdminArea) :
+			echo $this->Form->iconizedInput('client_name', array(
+				'class' => 'input-medium',
+				'placeholder' => __d('invoices', 'Client name'),
+				'prepend' => '<i class="icon-user"></i>'
+			));
+		endif;
+	?>
+	<?=
 		$this->Form->iconizedInput('min_price', array(
 			'class' => 'input-mini',
 			'min' => 0,

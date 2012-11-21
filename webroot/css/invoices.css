@@ -11,3 +11,13 @@
 	font-size: 1.2em;
 	font-weight: bold;
 }
+
+.before-product-text {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+.after-product-text {
+	margin-top: 3em;
+	margin-bottom: 1em;
+}

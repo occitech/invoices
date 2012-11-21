@@ -12,7 +12,12 @@ class InvoicesController extends InvoicesAppController {
  *
  * @var array
  */
-	public $helpers = array('Invoices.InvoicePdf', 'Invoices.InvoiceDecorator');
+	public $helpers = array('Invoices.InvoicePdf');
+
+	public function __construct($request = null, $response = null) {
+		$this->helpers['Invoices.InvoiceDecorator'] = array('className' => Configure::read('Invoices.Decorator'));
+		parent::__construct($request, $response);
+	}
 
 /**
  * Before filter callback
