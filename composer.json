@@ -1,0 +1,17 @@
+{
+	"name": "occitech/invoices",
+	"type": "cakephp-plugin",
+	"description": "Invoicing Plugin for CakePHP",
+	"keywords": ["cakephp","invoices"],
+	"homepage": "http://www.occi-tech.com",
+	"license": "Property of Occitech",
+	"authors": [
+		{
+			"name": "Occitech",
+			"homepage": "http://www.occi-tech.com"
+		}
+	],
+	"require": {
+		"composer/installers": "*"
+	}
+}
