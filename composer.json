@@ -1,0 +1,33 @@
+{
+	"name": "occitech/invoices",
+	"type": "cakephp-plugin",
+	"description": "Invoicing Plugin for CakePHP",
+	"keywords": ["cakephp","invoices"],
+	"homepage": "http://www.occi-tech.com",
+	"license": "Property of Occitech",
+	"authors": [
+		{
+			"name": "Occitech",
+			"homepage": "http://www.occi-tech.com"
+		}
+	],
+	"repositories": [
+		{
+			"type": "package",
+			"package": {
+				"type": "cakephp-plugin",
+				"name": "joeytrapp/partials",
+				"version": "dev-master",
+				"source": {
+					"url": "git://github.com/joeytrapp/partials.git",
+					"type": "git",
+					"reference": "master"
+				}
+			}
+		}
+	],
+	"require": {
+		"composer/installers": "*",
+		"joeytrapp/partials": "dev-master"
+	}
+}
