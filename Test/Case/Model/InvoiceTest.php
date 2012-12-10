@@ -185,7 +185,7 @@ class InvoiceTest extends SimpleAppTestCase {
 	}
 
 	public function testGenerateGenerateIdCanBeDifferantFromNumber() {
-		Configure::write('Invoices.isIsNumber', false);
+		Configure::write('Invoices.idIsNumber', false);
 		$this->Invoice = new SpyInvoice();
 		$this->Invoice->setInvoiceNumberGenerator($this->Invoice);
 
