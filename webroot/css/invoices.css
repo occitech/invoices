@@ -21,3 +21,11 @@
 	margin-top: 3em;
 	margin-bottom: 1em;
 }
+
+table th {
+	border: 1px solid #DDDDDD;
+	font-weight: bold;
+}
+table td {
+	border: 1px solid #DDDDDD;
+}
