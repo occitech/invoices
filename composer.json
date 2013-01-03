@@ -11,21 +11,6 @@
 			"homepage": "http://www.occi-tech.com"
 		}
 	],
-	"repositories": [
-		{
-			"type": "package",
-			"package": {
-				"type": "cakephp-plugin",
-				"name": "joeytrapp/partials",
-				"version": "dev-master",
-				"source": {
-					"url": "git://github.com/joeytrapp/partials.git",
-					"type": "git",
-					"reference": "master"
-				}
-			}
-		}
-	],
 	"require": {
 		"composer/installers": "*",
 		"joeytrapp/partials": "dev-master"
