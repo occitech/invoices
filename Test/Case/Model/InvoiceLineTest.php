@@ -43,7 +43,8 @@ class InvoiceLineTest extends SimpleAppTestCase {
 			'alias' => 'InvoiceLine'
 		));
 
-		$this->_record = $this->InvoiceLine->find();
+		$this->InvoiceLine->recursive = -1;
+		$this->_record = $this->InvoiceLine->find('first');
 	}
 
 /**
