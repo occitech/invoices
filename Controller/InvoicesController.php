@@ -12,10 +12,12 @@ class InvoicesController extends InvoicesAppController {
  *
  * @var array
  */
-	public $helpers = array('Invoices.InvoicePdf');
+	public $helpers = array('Invoices.InvoicePdf', 'Partials.Partial');
 
 	public function __construct($request = null, $response = null) {
-		$this->helpers['Invoices.InvoiceDecorator'] = array('className' => Configure::read('Invoices.Decorator'));
+		$this->helpers['Invoices.InvoiceDecorator'] = array(
+			'className' => Configure::read('Invoices.Decorator')
+		);
 		parent::__construct($request, $response);
 	}
 
@@ -54,7 +56,7 @@ class InvoicesController extends InvoicesAppController {
  * @param string $id The invoice $id
  * @return void
  */
-	public function view ($id) {
+	public function view($id) {
 		try {
 			$invoice = $this->Invoice->view($id);
 		} catch (OutOfBoundsException $exc) {
@@ -77,7 +79,7 @@ class InvoicesController extends InvoicesAppController {
  *
  * @return void
  */
-	public function index () {
+	public function index() {
 		$this->Prg->commonProcess();
 		$searchOptions = array('conditions' => $this->Invoice->parseCriteria($this->request->params['named']));
 		$this->paginate = array('limit' => 10) + array_merge_recursive(
@@ -99,7 +101,7 @@ class InvoicesController extends InvoicesAppController {
  * @param string $id The invoice $id
  * @return void
  */
-	public function admin_view ($id) {
+	public function admin_view($id) {
 		try {
 			$invoice = $this->Invoice->view($id);
 		} catch (OutOfBoundsException $exc) {
@@ -118,7 +120,7 @@ class InvoicesController extends InvoicesAppController {
  *
  * @return void
  */
-	public function admin_index () {
+	public function admin_index() {
 		$this->Prg->commonProcess();
 		$searchOptions = array('conditions' => $this->Invoice->parseCriteria($this->request->params['named']));
 		$this->paginate = array('limit' => 10) + array_merge_recursive(
@@ -151,4 +153,5 @@ class InvoicesController extends InvoicesAppController {
 
 		return $authUserId;
 	}
+
 }

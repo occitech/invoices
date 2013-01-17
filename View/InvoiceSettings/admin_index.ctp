@@ -28,12 +28,11 @@
 <div class="actions">
 	<h3><?= __d('invoices', 'Actions'); ?></h3>
 	<ul>
-		<?php $this->Actions->setActionsOptions(null); ?>
-		<li><?=
-			$this->Html->link(
+		<li>
+			<?= $this->Html->link(
 				__d('invoices', 'List invoice'),
 				array('controller' => 'invoices', 'action' => 'index')
-			);
-		?></li>
+			); ?>
+		</li>
 	</ul>
 </div>
