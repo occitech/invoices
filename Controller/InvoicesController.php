@@ -1,5 +1,5 @@
 <?php
-App::uses('Invoice.InvoiceAppController', 'Controller');
+App::uses('InvoiceAppController', 'Invoices.Controller');
 /**
  * Invoices controller
  * Allows to manage Invoices
