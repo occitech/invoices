@@ -141,24 +141,7 @@ FUNC
 		$_cacheQueries = $this->cacheQueries;
 		$this->cacheQueries = false;
 		if (empty($this->id)) {
-			$lastInvoiceNumber = $this->find('first', array(
-				'fields' => array($this->alias . '.number'),
-				'order' => array($this->alias . '.created DESC'),
-				'recursive' => -1
-			));
-			$lastInvoiceNumber = isset($lastInvoiceNumber[$this->alias]['number']) ? $lastInvoiceNumber[$this->alias]['number'] : null;
-
-			$try = 1;
-			do {
-				$invoiceNumber = call_user_func(array($this->__invoiceNumberGenerator, 'generateInvoiceNumber'), $lastInvoiceNumber, $try);
-				if ($try++ > 10 || empty($invoiceNumber)) {
-					trigger_error(__d('invoices', '10 unsuccessful tries for invoice number generation. Check the generation algorithm.', true), E_USER_WARNING);
-					$invoiceNumber = String::uuid();
-				}
-				$duplicate = $this->find('count', array(
-					'conditions' => array($this->escapeField('number') => $invoiceNumber)
-				));
-			} while(!empty($duplicate));
+			$invoiceNumber = $this->__getGeneratedInvoiceNumber();
 
 			$this->data[$this->alias]['number'] = $invoiceNumber;
 			if ($this->__idIsNumber) {
@@ -174,6 +157,29 @@ FUNC
 		}
 		$this->cacheQueries = $_cacheQueries;
 		return true;
+	}
+
+	private function __getGeneratedInvoiceNumber() {
+		$lastInvoiceNumber = $this->find('first', array(
+			'fields' => array($this->alias . '.number'),
+			'order' => array($this->alias . '.created DESC'),
+			'recursive' => -1
+		));
+		$lastInvoiceNumber = isset($lastInvoiceNumber[$this->alias]['number']) ? $lastInvoiceNumber[$this->alias]['number'] : null;
+
+		$try = 1;
+		do {
+			$invoiceNumber = call_user_func(array($this->__invoiceNumberGenerator, 'generateInvoiceNumber'), $lastInvoiceNumber, $try);
+			if ($try++ > 10 || empty($invoiceNumber)) {
+				trigger_error(__d('invoices', '10 unsuccessful tries for invoice number generation. Check the generation algorithm.', true), E_USER_WARNING);
+				$invoiceNumber = String::uuid();
+			}
+			$duplicate = $this->find('count', array(
+				'conditions' => array($this->escapeField('number') => $invoiceNumber)
+			));
+		} while(!empty($duplicate));
+
+		return $invoiceNumber;
 	}
 
 /**
