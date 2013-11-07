@@ -19,6 +19,7 @@ class PluginInvoiceFixture extends CakeTestFixture {
 		'payment_type' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 20),
 		'payment_ref' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 100),
 		'created' => array('type' => 'datetime', 'null' => false, 'default' => NULL, 'after' => 'client_address'),
+		'is_pro_format' => array('type' => 'boolean', 'null' => false, 'default' => false),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'client_id' => array('column' => 'client_id', 'unique' => 0)),
 	);
 
@@ -40,6 +41,21 @@ class PluginInvoiceFixture extends CakeTestFixture {
 			'payment_type' => 'CB',
 			'payment_ref' => 'XXXWWWW65-666-EEEE',
 			'created' => '2011-12-02 14:16:49',
+			'is_pro_format' => false,
+		),
+		array(
+			'id' => '2012-002',
+			'number' => '2012-002',
+			'prefix' => null,
+			'client_id' => 'user-2',
+			'client_name' => 'Seconde User',
+			'client_address' => null,
+			'client_company' => null,
+			'global_price' => 179.4,
+			'payment_type' => 'CB',
+			'payment_ref' => 'XXXWWWW65-666-EEEE',
+			'created' => '2011-12-02 14:16:49',
+			'is_pro_format' => true,
 		),
 	);
 

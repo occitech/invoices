@@ -184,6 +184,18 @@ class InvoiceTest extends SimpleAppTestCase {
 		$this->assertTrue($this->__isUuid($resultInvoice['Invoice']['id']));
 	}
 
+	public function testGenerateProFormatInvoice() {
+		$invoice = $this->_getNewRecord();
+		$client = $invoice['Invoice'];
+		unset($client['prefix']);
+		$invoiceLine = $invoice['InvoiceLine'];
+
+		$result = $this->Invoice->generateProFormat($client, $invoiceLine);
+
+		$this->assertTrue($result);
+		$this->assertTrue($this->Invoice->field('is_pro_format'));
+	}
+
 	public function testGenerateGenerateIdCanBeDifferantFromNumber() {
 		Configure::write('Invoices.idIsNumber', false);
 		$this->Invoice = new SpyInvoice();

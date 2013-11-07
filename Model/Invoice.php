@@ -247,7 +247,7 @@ FUNC
 	}
 
 	public function generateProFormat($client, $invoiceLines, $payment = array(), $prefix = null) {
-		$this->generate($client, $invoiceLines, $payment, $prefix, true);
+		return $this->generate($client, $invoiceLines, $payment, $prefix, true);
 	}
 
 /**
