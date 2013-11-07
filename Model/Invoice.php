@@ -211,7 +211,7 @@ FUNC
  * @param string $prefix Prefix for the invoice number.
  * @return boolean True if the invoice is generated.
  */
-	public function generate($client, $invoiceLines, $payment = array(), $prefix = null) {
+	public function generate($client, $invoiceLines, $payment = array(), $prefix = null, $proFormat = false) {
 		$invoice = array($this->alias => array(
 			'prefix' => $prefix,
 			'client_id' => $client['client_id'],
@@ -219,6 +219,7 @@ FUNC
 			'client_address' => $client['client_address'],
 			'payment_type' => empty($payment['payment_type']) ? null : $payment['payment_type'],
 			'payment_ref' => empty($payment['payment_ref']) ? null : $payment['payment_ref'],
+			'is_pro_format' => $proFormat,
 		));
 
 		$invoice['InvoiceLine'] = $invoiceLines;
@@ -237,6 +238,10 @@ FUNC
 		}
 
 		return $success;
+	}
+
+	public function generateProFormat($client, $invoiceLines, $payment = array(), $prefix = null) {
+		$this->generate($client, $invoiceLines, $payment, $prefix, true);
 	}
 
 /**
