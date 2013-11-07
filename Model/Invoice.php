@@ -250,6 +250,14 @@ FUNC
 		return $this->generate($client, $invoiceLines, $payment, $prefix, true);
 	}
 
+	public function charge($invoiceId) {
+		$this->id = $invoiceId;
+
+		$invoiceNumber = $this->__getGeneratedInvoiceNumber();
+
+		return $this->saveField('is_pro_format', false) && $this->saveField('number', $invoiceNumber);
+	}
+
 /**
  * Define the array for range of price
  *

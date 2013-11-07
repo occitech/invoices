@@ -196,6 +196,21 @@ class InvoiceTest extends SimpleAppTestCase {
 		$this->assertTrue($this->Invoice->field('is_pro_format'));
 	}
 
+	public function testProFormatInvoiceCanBeToggledToClassicInvoice() {
+		$this->Invoice->charge('2012-002');
+		$this->Invoice->id = '2012-002';
+
+		$this->assertFalse($this->Invoice->field('is_pro_format'));
+	}
+
+	public function testProFormatChargingRegenerateInvoiceNumber() {
+		$this->Invoice->id = '2012-002';
+		$unexpected = $this->Invoice->field('number');
+		$this->Invoice->charge($this->Invoice->id);
+
+		$this->assertNotEquals($unexpected, $this->Invoice->field('number'));
+	}
+
 	public function testGenerateGenerateIdCanBeDifferantFromNumber() {
 		Configure::write('Invoices.idIsNumber', false);
 		$this->Invoice = new SpyInvoice();
