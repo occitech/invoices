@@ -67,11 +67,7 @@ class InvoicesController extends InvoicesAppController {
 			$this->Session->setFlash(__d('invoices', 'You are not allowed to see this invoice.'));
 			return $this->redirect($this->referer());
 		}
-
-		$InvoiceSettings = ClassRegistry::init('Invoices.InvoiceSetting');
-		$invoiceSettings = $InvoiceSettings->find('list', array('fields' => array('tag', 'value')));
-
-		$this->set(compact('invoice', 'invoiceSettings'));
+		$this->__setInvoiceViewVars($invoice);
 	}
 
 /**
@@ -108,10 +104,7 @@ class InvoicesController extends InvoicesAppController {
 			$this->Session->setFlash($exc->getMessage(), 'error');
 			return $this->redirect($this->referer(array('action' => 'index')), 403);
 		}
-		$InvoiceSettings = ClassRegistry::init('Invoices.InvoiceSetting');
-		$invoiceSettings = $InvoiceSettings->find('list', array('fields' => array('tag', 'value')));
-
-		$this->set(compact('invoice', 'invoiceSettings'));
+		$this->__setInvoiceViewVars($invoice);
 		$this->render('view');
 	}
 
@@ -154,4 +147,11 @@ class InvoicesController extends InvoicesAppController {
 		return $authUserId;
 	}
 
+	private function __setInvoiceViewVars($invoice) {
+		$InvoiceSettings = ClassRegistry::init('Invoices.InvoiceSetting');
+		$invoiceSettings = $InvoiceSettings->find('list', array('fields' => array('tag', 'value')));
+
+		$this->set(compact('invoice', 'invoiceSettings'));
+		$this->set('isProFormat', $invoice['Invoice']['is_pro_format']);
+	}
 }
