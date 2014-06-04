@@ -1,8 +1,17 @@
-# Content plugin for CakePHP
+# Invoicing plugin for CakePHP
+
+This plugin allows you to quickly add the most common Invoicing features to your CakePHP application. Invoices can be created from anywhere with any type of content (Invoice Line), the plugin will manage HTML and PDF rendering for your users.
+
+## Stability
+
+We have been using this plugin on several client projects in production for a while, so consider it as stable enough!
+
+It literally took years before open sourcing it, and we have not yet wanted to spend more time on documentation, continuous integration or further refactorings.
+**Please star the repository to show your interest**, or even better send us PRs to improve the Plugin we will appreciate! You can also [hire us](mailto:contact@occitech.fr) to do it for you ;)
 
 ## Installation
 
-* Add 'pdf' in Router::parseExtensions() in Config/routes.php
+* Add 'pdf' in `Router::parseExtensions()` in `Config/routes.php`
 * Add plugin in bootstrap with bootstrap
 ```
 CakePlugin::loadAll(array(
@@ -35,3 +44,7 @@ CakePlugin::loadAll(array(
 
 * The plugin allows you to use your Decorator helper.
 	`Configure::write('Invoices.Decorator', 'MyDecorator');`
+
+# Licence
+
+[MIT](LICENSE)

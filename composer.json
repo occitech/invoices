@@ -3,12 +3,12 @@
 	"type": "cakephp-plugin",
 	"description": "Invoicing Plugin for CakePHP",
 	"keywords": ["cakephp","invoices"],
-	"homepage": "http://www.occi-tech.com",
-	"license": "Property of Occitech",
+	"homepage": "http://www.occitech.fr",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Occitech",
-			"homepage": "http://www.occi-tech.com"
+			"homepage": "http://www.occitech.fr"
 		}
 	],
 	"require": {
