@@ -1,6 +1,7 @@
 <?php
 App::import('Vendor', 'Invoices.IInvoiceNumberGenerator');
 App::uses('Invoices.InvoicesAppModel', 'Model');
+
 /**
  * Invoice model
  *
@@ -106,7 +107,7 @@ class Invoice extends InvoicesAppModel implements IInvoiceNumberGenerator {
 		$maxLengthRule = create_function('$limit', <<<FUNC
 			return array('maxLength' => array(
 				'rule' => array('maxLength', \$limit),
-				'message' => sprintf(__('Le field must not exceed %s characters', true), \$limit),
+				'message' => sprintf(__d('invoices', 'The field must not exceed %s characters', true), \$limit),
 				'allowEmpty' => true,
 				'required' => false,
 				'last' => false,
@@ -240,7 +241,7 @@ FUNC
 			}
 		} else {
 			$date = strftime('%d %B %Y at %H:%M:%S');
-			$this->log(sprintf(__d('invoices', 'The invoice for client %s the %s was not generate.', true),$client['client_id'],$date));
+			$this->log(sprintf(__d('invoices', 'The invoice for client %s the %s was not generated.', true), $client['client_id'], $date));
 		}
 
 		return $success;
